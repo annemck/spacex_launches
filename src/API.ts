@@ -4,7 +4,8 @@ export type Launch = {
   launch_year: number,
   launch_date_utc: string,
   rocket: {rocket_name: string}
-  rocket_name: string
+  rocket_name: string,
+  launch_date: string
 }
 
 const filters = `?filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
@@ -22,7 +23,8 @@ export const fetchLaunchDetails = async () => {
       mission_name: launch.mission_name,
       launch_year: launch.launch_year,
       launch_date_utc: launch.launch_date_utc,
-      rocket_name: launch.rocket.rocket_name
+      rocket_name: launch.rocket.rocket_name,
+      launch_date: new Date(launch.launch_date_utc).toLocaleString()
     }))
       
   } catch (err){

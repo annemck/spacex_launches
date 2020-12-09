@@ -9,7 +9,7 @@ const LaunchListItem: React.FC<Props> = ({launches}) => {
     <div>
     {launches.map(launch => (
       <li key={launch.mission_name}>
-        launch item here
+        {launch.flight_number} {launch.mission_name} {launch.launch_date_utc} {launch.rocket_name} {launch.launch_date_unix}
       </li>
     ))}
     </div>
@@ -17,3 +17,9 @@ const LaunchListItem: React.FC<Props> = ({launches}) => {
 }
 
 export default LaunchListItem;
+
+
+// let dateString = '02/05/2020';
+// let momentVariable = moment(dateString, 'MM-DD-YYYY');
+// let stringvalue = momentVariable.format('YYYY-MM-DD');
+// console.log(stringvalue); // outputs 2020-05-02
