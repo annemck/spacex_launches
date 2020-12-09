@@ -1,8 +1,18 @@
 import React from 'react';
 
-const LaunchListItem = () => {
+type Props = {
+  launches: any[]
+}
+
+const LaunchListItem: React.FC<Props> = ({launches}) => {
   return(
-    <p>This will be a Launch List Item</p>
+    <div>
+    {launches.map(launch => (
+      <li key={launch.mission_name}>
+        launch item here
+      </li>
+    ))}
+    </div>
   )
 }
 
