@@ -22,9 +22,9 @@ export const fetchLaunchDetails = async () => {
       flight_number: launch.flight_number,
       mission_name: launch.mission_name,
       launch_year: launch.launch_year,
-      launch_date_utc: launch.launch_date_utc,
       rocket_name: launch.rocket.rocket_name,
-      launch_date: new Date(launch.launch_date_utc).toLocaleString()
+      launch_date: new Date(launch.launch_date_utc).toDateString().substring(4)
+      
     }))
       
   } catch (err){

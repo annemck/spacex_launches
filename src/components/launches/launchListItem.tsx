@@ -9,7 +9,7 @@ const LaunchListItem: React.FC<Props> = ({launches}) => {
     <div>
     {launches.map(launch => (
       <li key={launch.mission_name}>
-        {launch.flight_number} {launch.mission_name} {launch.launch_date_utc} {launch.rocket_name} {launch.launch_date_unix}
+        {launch.flight_number} {launch.mission_name} {launch.launch_date} {launch.rocket_name}
       </li>
     ))}
     </div>
