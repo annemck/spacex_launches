@@ -4,32 +4,17 @@ import React, {useState, useEffect} from 'react';
 import LaunchContainer from './components/launches/launchContainer';
 import {fetchLaunchDetails} from './API';
 
-
+//const result : string[] = [];
 
 const App = () => {
 
   const [loaded, setLoaded] = useState(true);
-  //const [launches, setLaunches] = useState([]);
-  
-  // useEffect(() => {
-  //   console.log('we are in useeffect');
-  //   const launchList = async () => {
-  //     try{
-  //       console.log('this is fetch');
-  //       setLoaded(false);
-  //       const launchList = await fetchLaunchDetails();
-  //       console.log(launchList);
-  //       setLoaded(true);
-  //     } catch(err){
-  //       console.log(err.message);
-  //     }
-  //   }
-  // }, []);
+  const [launches, setLaunches] = useState<any>([]);
   
   useEffect(() => {
     setLoaded(false);
     (async () => {
-      const launches = fetchLaunchDetails();
+      setLaunches(await fetchLaunchDetails());
       setLoaded(true);
     })()
   }, []);
