@@ -8,6 +8,30 @@ export type Launch = {
   launch_date: string
 }
 
+const formatDate = (launchDay: string) => {
+  const formatDay = new Date(launchDay).toDateString().substring(4);
+  let day = formatDay.substring(4, 6);
+  const month = formatDay.substring(0, 3);
+  const year = formatDay.substring(7);
+  const lastNum = day.substring(1);
+  
+  if (day.substring(0, 1) === '0'){
+    day = day.substring(1);
+  }
+  
+  if (day === '11'){
+    return day + 'th ' + month + ' ' + year;
+  } else if (lastNum === '1'){
+    return day + 'st ' + month + ' ' + year;
+  } else if (lastNum === '2'){
+    return day + 'nd ' + month + ' ' + year;
+  } else if (lastNum === '3'){
+    return day + 'rd ' + month + ' ' + year;
+  } else {
+    return day + 'th ' + month + ' ' + year;
+  }
+}
+
 const filters = `?filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
 
 export const fetchLaunchDetails = async () => {
@@ -23,7 +47,7 @@ export const fetchLaunchDetails = async () => {
       mission_name: launch.mission_name,
       launch_year: launch.launch_year,
       rocket_name: launch.rocket.rocket_name,
-      launch_date: new Date(launch.launch_date_utc).toDateString().substring(4)
+      launch_date: formatDate(launch.launch_date_utc)
       
     }))
       
