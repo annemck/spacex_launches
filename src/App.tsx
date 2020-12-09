@@ -4,8 +4,6 @@ import React, {useState, useEffect} from 'react';
 import LaunchContainer from './components/launches/launchContainer';
 import {fetchLaunchDetails} from './API';
 
-//const result : string[] = [];
-
 const App = () => {
 
   const [loaded, setLoaded] = useState(true);
@@ -23,7 +21,7 @@ const App = () => {
   
   return (
     <div className="App">
-      {loaded ? <LaunchContainer/> : <p>Loading...</p>}
+      {loaded ? <LaunchContainer launches={launches}/> : <p>Loading...</p>}
     </div>
   );
 }

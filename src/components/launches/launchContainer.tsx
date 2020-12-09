@@ -1,7 +1,11 @@
 import React from 'react';
 import LaunchListItem from './launchListItem';
 
-const LaunchContainer = () => {
+type Props = {
+  launches: any[]
+}
+
+const LaunchContainer: React.FC<Props> = ({launches}) => {
   return(
     <ul>
       <LaunchListItem/>
