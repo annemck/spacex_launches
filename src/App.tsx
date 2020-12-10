@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     setLoaded(false);
     (async () => {
-      setLaunches(await fetchLaunchDetails());
+      setLaunches(await fetchLaunchDetails(null, 'asc'));
       setLoaded(true);
     })()
   }, []);
@@ -26,6 +26,7 @@ const App = () => {
         <ButtonContainer/>
       </div>
       <div>
+      <p>it is working</p>
       {loaded ? <LaunchContainer launches={launches}/> : <p>Loading...</p>}
       </div>
     </div>
