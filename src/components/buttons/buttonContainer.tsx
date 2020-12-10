@@ -3,12 +3,20 @@ import {ReloadButton} from './reloadButton';
 import {FilterByYear} from './yearFilterButton';
 import {SortButton} from './sortButton';
 
-const ButtonContainer = () => {
+type Props = {
+  loaded: boolean
+}
+
+const ButtonContainer: React.FC<Props> = ({loaded}) => {
   return(
     <div>
       <ReloadButton/>
-      <FilterByYear/>
-      <SortButton/>
+      {loaded ?
+        <React.Fragment>
+          <FilterByYear/>
+          <SortButton/>
+        </React.Fragment>
+      : null}
     </div>
   )
 }

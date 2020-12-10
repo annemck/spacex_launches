@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div className="App">
       <div>
-        <ButtonContainer/>
+        <ButtonContainer loaded={loaded}/>
       </div>
       <div>
       {loaded ? <LaunchContainer launches={launches}/> : <p>Loading...</p>}

@@ -7,12 +7,9 @@ export const SortButton = () => {
   const handleClick = () => {
     if (order === 'asc'){
       setOrder('desc');
-      console.log(order);
     } else {
       setOrder('asc')
-      console.log(order);
     }
-    console.log('clicked');
   }
   
   return(
