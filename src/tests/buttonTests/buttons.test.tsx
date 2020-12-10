@@ -23,6 +23,13 @@ let sort = () => {
 //   expect(container).toHaveTextContent('Reload');
 // })
 //
+
+// it('Filter by year works', () => {
+//   let year = 2006;
+//   const{rerender} = render(<App/>);
+//   let filterButton = screen.getByRole('button', {name: /Filter by Year/i});
+//
+// })
 //
 // it('Filter by year button exists', () => {
 //   const{container} = render(<ButtonContainer/>);

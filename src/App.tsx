@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 // import launchImage from './assets/images/launch-home.png';
 import LaunchContainer from './components/launches/launchContainer';
 import ButtonContainer from './components/buttons/buttonContainer';
-import {fetchLaunchDetails} from './API';
+import {fetchLaunchDetails, getListOfYears} from './API';
 
 const App = () => {
 
@@ -11,6 +11,8 @@ const App = () => {
   const [launches, setLaunches] = useState<any>([]);
   const [year, setYear] = useState<number | null>(null);
   const [order, setOrder] = useState('asc');
+  const [launchYears, setLaunchYears] = useState<number[]>([]);
+  
   
   const getLaunches = async () => {
     setLoaded(false);
@@ -19,26 +21,28 @@ const App = () => {
   }
   
   const handleSort = () => {
-    console.log('handle sort running');
     if (order === 'asc'){
       setOrder('desc');
     } else {
       setOrder('asc')
     }
-    
     setLaunches(launches.slice(0).reverse());
   }
   
+  
   useEffect(() => {
-    getLaunches();
-  }, []);
+    (async () => {
+      await getLaunches();
+      setLaunchYears(getListOfYears());
+    })()
+  }, [])
 
   
   
   return (
     <div className="App">
       <div>
-        <ButtonContainer loaded={loaded} sortOrder={order} sort={handleSort} />
+        <ButtonContainer loaded={loaded} sortOrder={order} sort={handleSort} years={launchYears}/>
       </div>
       <div>
       {loaded ? <LaunchContainer launches={launches}/> : <p>Loading...</p>}
