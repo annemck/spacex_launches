@@ -40,8 +40,6 @@ const formatDate = (launchDay: string) => {
 const mainEndpoint = `https://api.spacexdata.com/v3/launches?`;
 const filters = `filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
 
-//https://api.spacexdata.com/v3/launches?launch_year=2006&filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name
-
 
 export const fetchLaunchDetails = async (year: Props["year"], sort: Props["sort"]) => {
   let filteredEndpoint;

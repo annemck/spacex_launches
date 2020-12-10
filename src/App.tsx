@@ -9,11 +9,14 @@ const App = () => {
 
   const [loaded, setLoaded] = useState(true);
   const [launches, setLaunches] = useState<any>([]);
+  const [year, setYear] = useState<number | null>(null);
+  let [sort, setSort] = useState<string>('asc');
   
   useEffect(() => {
     setLoaded(false);
     (async () => {
-      setLaunches(await fetchLaunchDetails(null, 'asc'));
+      //sorts asc with no year by default
+      setLaunches(await fetchLaunchDetails(year, sort));
       setLoaded(true);
     })()
   }, []);
@@ -26,7 +29,6 @@ const App = () => {
         <ButtonContainer/>
       </div>
       <div>
-      <p>it is working</p>
       {loaded ? <LaunchContainer launches={launches}/> : <p>Loading...</p>}
       </div>
     </div>

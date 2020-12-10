@@ -1,8 +1,15 @@
 import React from 'react';
+import {ReloadButton} from './reloadButton';
+import {FilterByYear} from './yearFilterButton';
+import {SortButton} from './sortButton';
 
 const ButtonContainer = () => {
   return(
-    <p>this is the button container</p>
+    <div>
+      <ReloadButton/>
+      <FilterByYear/>
+      <SortButton/>
+    </div>
   )
 }
 
