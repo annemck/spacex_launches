@@ -10,7 +10,6 @@ export type Launch = {
 
 export type Props = {
   year: number | null
-  sort: string
 }
 
 const formatDate = (launchDay: string) => {
@@ -41,7 +40,7 @@ const mainEndpoint = `https://api.spacexdata.com/v3/launches?`;
 const filters = `filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
 
 
-export const fetchLaunchDetails = async (year: Props["year"], sort: Props["sort"]) => {
+export const fetchLaunchDetails = async (year: Props["year"]) => {
   let filteredEndpoint;
   
   if (year){
@@ -55,8 +54,7 @@ export const fetchLaunchDetails = async (year: Props["year"], sort: Props["sort"
     //double await because we first await the fetch and then we await the conversion to json
     const fetchedLaunches = await (await fetch(filteredEndpoint)).json();
     
-    if (sort === 'desc'){
-      return fetchedLaunches.slice(0).reverse().map((launch: Launch) => (
+    return fetchedLaunches.map((launch: Launch) => (
       {
         flight_number: launch.flight_number,
         mission_name: launch.mission_name,
@@ -64,18 +62,8 @@ export const fetchLaunchDetails = async (year: Props["year"], sort: Props["sort"
         rocket_name: launch.rocket.rocket_name,
         launch_date: formatDate(launch.launch_date_utc)
 
-      }))
-    } else {
-      return fetchedLaunches.map((launch: Launch) => (
-      {
-        flight_number: launch.flight_number,
-        mission_name: launch.mission_name,
-        launch_year: launch.launch_year,
-        rocket_name: launch.rocket.rocket_name,
-        launch_date: formatDate(launch.launch_date_utc)
-
-      }))
-    }
+      }
+    ))
 
   } catch (err){
     throw err;

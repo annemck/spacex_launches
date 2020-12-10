@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 
+type Props = {
+  order: string,
+  changeSort: Function
+}
 
-export const SortButton = () => {
-  const [order, setOrder] = useState('asc');
+
+export const SortButton: React.FC<Props> = ({order, changeSort}) => {
   
   const handleClick = () => {
-    if (order === 'asc'){
-      setOrder('desc');
-    } else {
-      setOrder('asc')
-    }
+    changeSort();
   }
   
   return(

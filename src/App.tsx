@@ -10,15 +10,27 @@ const App = () => {
   const [loaded, setLoaded] = useState(true);
   const [launches, setLaunches] = useState<any>([]);
   const [year, setYear] = useState<number | null>(null);
-  let [sort, setSort] = useState<string>('asc');
+  const [order, setOrder] = useState('asc');
+  
+  const getLaunches = async () => {
+    setLoaded(false);
+    setLaunches(await fetchLaunchDetails(year));
+    setLoaded(true);
+  }
+  
+  const handleSort = () => {
+    console.log('handle sort running');
+    if (order === 'asc'){
+      setOrder('desc');
+    } else {
+      setOrder('asc')
+    }
+    
+    setLaunches(launches.slice(0).reverse());
+  }
   
   useEffect(() => {
-    setLoaded(false);
-    (async () => {
-      //sorts asc with no year by default
-      setLaunches(await fetchLaunchDetails(year, sort));
-      setLoaded(true);
-    })()
+    getLaunches();
   }, []);
 
   
@@ -26,7 +38,7 @@ const App = () => {
   return (
     <div className="App">
       <div>
-        <ButtonContainer loaded={loaded}/>
+        <ButtonContainer loaded={loaded} sortOrder={order} sort={handleSort} />
       </div>
       <div>
       {loaded ? <LaunchContainer launches={launches}/> : <p>Loading...</p>}
