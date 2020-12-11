@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import logo from './assets/images/spacex-logo.png';
 import launchImage from './assets/images/launch-home.png';
-import './styles/App.css';
+import './assets/styles/App.css';
 import LaunchContainer from './components/launches/launchContainer';
 import ButtonContainer from './components/buttons/buttonContainer';
 import {fetchLaunchDetails, getListOfYears} from './API';
@@ -105,8 +105,9 @@ const App = () => {
   
   return (
     <div className="App">
-      <div>
+      <div className="logo_div">
         <img src={logo} alt="Space X Logo" className="spacex_logo"/>
+        <p className="logo_text">LAUNCHES</p>
       </div>
       
       <div>
