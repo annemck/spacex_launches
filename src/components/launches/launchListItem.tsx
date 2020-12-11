@@ -17,9 +17,3 @@ const LaunchListItem: React.FC<Props> = ({launches}) => {
 }
 
 export default LaunchListItem;
-
-
-// let dateString = '02/05/2020';
-// let momentVariable = moment(dateString, 'MM-DD-YYYY');
-// let stringvalue = momentVariable.format('YYYY-MM-DD');
-// console.log(stringvalue); // outputs 2020-05-02

@@ -32,26 +32,42 @@ const formatDate = (launchDay: string) => {
   }
 }
 
-const filters = `?filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
+const endpoint = `https://api.spacexdata.com/v3/launches?filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
+let fetchedLaunches: Launch[] = [];
+
+
+export const getListOfYears = () => {
+  const yearList: number[] = [];
+
+  for (let launch of fetchedLaunches){
+    if (!yearList.includes(launch.launch_year)){
+      yearList.push(launch.launch_year);
+    }
+  }
+  
+  return(yearList);
+}
+
 
 export const fetchLaunchDetails = async () => {
+  
   try{
-    const mainEndpoint = `https://api.spacexdata.com/v3/launches`;
-    const filteredEndpoint = mainEndpoint + filters;
-    
+
     //double await because we first await the fetch and then we await the conversion to json
-    const fetchedLaunches = await (await fetch(filteredEndpoint)).json();
+    fetchedLaunches = await (await fetch(endpoint)).json();
+    
     return fetchedLaunches.map((launch: Launch) => (
-    {
-      flight_number: launch.flight_number,
-      mission_name: launch.mission_name,
-      launch_year: launch.launch_year,
-      rocket_name: launch.rocket.rocket_name,
-      launch_date: formatDate(launch.launch_date_utc)
-      
-    }))
-      
+      {
+        flight_number: launch.flight_number,
+        mission_name: launch.mission_name,
+        launch_year: launch.launch_year,
+        rocket_name: launch.rocket.rocket_name,
+        launch_date: formatDate(launch.launch_date_utc)
+
+      }
+    ))
+
   } catch (err){
-    console.log(err.message);
+    throw err;
   }
 }
