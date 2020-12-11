@@ -7,16 +7,36 @@ type Props = {
   loaded: boolean,
   sortOrder: string,
   years: number[],
-  sort: Function
+  selectedYear: number | null,
+  sort: Function,
+  filter: Function
 }
 
-const ButtonContainer: React.FC<Props> = ({loaded, sortOrder, sort, years}) => {
+const ButtonContainer: React.FC<Props> = ({loaded, sortOrder, years, selectedYear, sort, filter}) => {
+  // return(
+  //   <div>
+  //     <ReloadButton/>
+  //     {loaded ?
+  //       <React.Fragment>
+  //         <FilterByYear launchYears={years} selectedYear={selectedYear} handleFilter={filter}/>
+  //         <SortButton order={sortOrder} changeSort={sort}/>
+  //       </React.Fragment>
+  //     : null}
+  //   </div>
+  // )
+  
   return(
     <div>
       <ReloadButton/>
+      
+      {loaded || selectedYear ?
+        <React.Fragment>
+          <FilterByYear launchYears={years} selectedYear={selectedYear} handleFilter={filter} />
+        </React.Fragment>
+      : null}
+      
       {loaded ?
         <React.Fragment>
-          <FilterByYear launchYears={years}/>
           <SortButton order={sortOrder} changeSort={sort}/>
         </React.Fragment>
       : null}
