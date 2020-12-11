@@ -27,12 +27,22 @@ let sort = () => {
   };
 }
 
+test('Reload button re-fetches from API', async () => {
+  const{container} = await render(<App/>);
+  const reload = getByTestId('reload-button') as HTMLElement;
+  //let reload = screen.getByRole('button', {name: /Reload/i});
+  expect(container).toHaveTextContent('1 FalconSat');
+  fireEvent.click(reload);
+  expect(container).toHaveTextContent('Loading');
+})
 
-// it('Reload button exists', () => {
-//   const{container} = render(<ButtonContainer loaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter}/>);
-//   expect(container).toHaveTextContent('Reload');
-// })
-//
+
+
+it('Reload button exists', () => {
+  const{container} = render(<ButtonContainer loaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter}/>);
+  expect(container).toHaveTextContent('Reload');
+})
+
 
 test('Filter by year button changes shown option on change', () => {
   const{getByTestId} = render(<FilterByYear launchYears={years} selectedYear={selectedYear} handleFilter={handleFilter}/>);

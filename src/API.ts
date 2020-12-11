@@ -36,8 +36,7 @@ const formatDate = (launchDay: string) => {
   }
 }
 
-const mainEndpoint = `https://api.spacexdata.com/v3/launches?`;
-const filters = `filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
+const endpoint = `https://api.spacexdata.com/v3/launches?filter=flight_number,mission_name,launch_year,launch_date_utc,rocket/rocket_name`;
 let fetchedLaunches: Launch[] = [];
 
 
@@ -54,19 +53,12 @@ export const getListOfYears = () => {
 }
 
 
-export const fetchLaunchDetails = async (year: Props["year"]) => {
-  let filteredEndpoint;
-  
-  if (year){
-    filteredEndpoint = mainEndpoint + `launch_year=` + year + `&`;
-  } else {
-    filteredEndpoint = mainEndpoint + filters;
-  }
+export const fetchLaunchDetails = async () => {
   
   try{
 
     //double await because we first await the fetch and then we await the conversion to json
-    fetchedLaunches = await (await fetch(filteredEndpoint)).json();
+    fetchedLaunches = await (await fetch(endpoint)).json();
     
     return fetchedLaunches.map((launch: Launch) => (
       {

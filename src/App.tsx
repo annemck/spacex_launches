@@ -17,7 +17,12 @@ const App = () => {
   
   const getLaunches = async () => {
     setLoaded(false);
-    setLaunches(await fetchLaunchDetails(year));
+    setLaunches(await fetchLaunchDetails());
+  }
+  
+  const handleReload = async() => {
+    setLoaded(false);
+    setLaunches(await fetchLaunchDetails())
   }
   
   const handleFilter = async (newYear: number | null) => {
