@@ -7,7 +7,7 @@ type Props = {
 
 const LaunchContainer: React.FC<Props> = ({launches}) => {
   return(
-    <ul>
+    <ul className="launch_list">
       <LaunchListItem launches={launches}/>
     </ul>
   )

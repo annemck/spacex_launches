@@ -1,0 +1,76 @@
+:root {
+  --primary-blue: #215184;
+  --font-color: #545454;
+}
+
+.spacex_logo {
+  position: fixed;
+  max-height: 30px;
+}
+
+.launch_img {
+  position: fixed;
+  padding-top: 10vh;
+  max-height: 80vh;
+}
+
+.all_buttons {
+  
+}
+
+button, select {
+  background-color: var(--primary-blue);
+  color: white;
+  min-height: 30px;
+}
+
+.reload_button {
+  position: fixed;
+  top: 5vh;
+  right: 0px;
+}
+
+.year_filter {
+  position: fixed;
+  top: 10vh;
+  right: 20vw;
+  padding-right: 10px;
+}
+
+.sort_button {
+  position: fixed;
+  top: 10vh;
+  right: 10vw;
+  padding-left: 10px;
+}
+
+.container {
+  position: absolute;
+  top: 20vh;
+  max-height: 80vh;
+  right: 10vw;
+  overflow: scroll;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-width: 40vw;
+}
+
+.flight_number, .mission_name, .launch_date {
+  display: inline-block;
+}
+
+.flight_number {
+  padding-right: 15px;
+}
+
+.launch_date, .rocket_name {
+  position: absolute;
+  right: 0;
+}
