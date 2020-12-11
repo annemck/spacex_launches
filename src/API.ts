@@ -8,10 +8,6 @@ export type Launch = {
   launch_date: string
 }
 
-export type Props = {
-  year: number | null
-}
-
 const formatDate = (launchDay: string) => {
   const formatDay = new Date(launchDay).toDateString().substring(4);
   let day = formatDay.substring(4, 6);
