@@ -21,28 +21,37 @@ const App = () => {
   }
   
   const handleReload = async() => {
-    setLoaded(false);
     await getLaunches();
-    
-    //keep descending order if originally applied
-    if (order === 'desc'){
-      await setLaunches(launches.slice(0).reverse());
-    }
-    
-    //keep year filter if originally applied
-    if (year !== null){
-      let tempArray = [];
-      setFilteredLaunches([]);
-      
-      for (let launch of launches){
-        if (launch.launch_year === year){
-          tempArray.push(launch);
-        }
-      }
-      setFilteredLaunches(tempArray);
-    }
-    
+    setFilteredLaunches([]);
+    setYear(null);
+    setOrder('asc');
+    setLaunchYears(getListOfYears());
     setLoaded(true);
+    
+    
+    // setLoaded(false);
+    // await getLaunches();
+    // setLaunchYears(getListOfYears());
+    //
+    // //keep descending order if originally applied
+    // if (order === 'desc'){
+    //   setLaunches(launches.slice(0).reverse());
+    // }
+    //
+    // //keep year filter if originally applied
+    // if (year !== null){
+    //   let tempArray = [];
+    //   setFilteredLaunches([]);
+    //
+    //   for (let launch of launches){
+    //     if (launch.launch_year === year){
+    //       tempArray.push(launch);
+    //     }
+    //   }
+    //   setFilteredLaunches(tempArray);
+    // }
+    //
+    // setLoaded(true);
   }
   
   const handleFilter = async (newYear: number | null) => {
