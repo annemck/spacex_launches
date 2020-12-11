@@ -7,7 +7,7 @@ import {fetchLaunchDetails, getListOfYears} from './API';
 
 const App = () => {
 
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState<boolean>(true);
   const [launches, setLaunches] = useState<any>([]);
   const [filteredLaunches, setFilteredLaunches] = useState<any>([]);
   const [year, setYear] = useState<number | null>(null);
@@ -22,7 +22,27 @@ const App = () => {
   
   const handleReload = async() => {
     setLoaded(false);
-    setLaunches(await fetchLaunchDetails())
+    await getLaunches();
+    
+    //keep descending order if originally applied
+    if (order === 'desc'){
+      await setLaunches(launches.slice(0).reverse());
+    }
+    
+    //keep year filter if originally applied
+    if (year !== null){
+      let tempArray = [];
+      setFilteredLaunches([]);
+      
+      for (let launch of launches){
+        if (launch.launch_year === year){
+          tempArray.push(launch);
+        }
+      }
+      setFilteredLaunches(tempArray);
+    }
+    
+    setLoaded(true);
   }
   
   const handleFilter = async (newYear: number | null) => {
@@ -76,7 +96,7 @@ const App = () => {
   return (
     <div className="App">
       <div>
-        <ButtonContainer loaded={loaded} sortOrder={order} sort={handleSort} years={launchYears} selectedYear={year} filter={handleFilter}/>
+        <ButtonContainer hasLoaded={loaded} sortOrder={order} sort={handleSort} years={launchYears} selectedYear={year} filter={handleFilter} reload={handleReload}/>
       </div>
       <div>
       {loaded ? <LaunchContainer launches={filteredLaunches.length > 0 ? filteredLaunches : launches}/> : <p>Loading...</p>}
@@ -86,5 +106,3 @@ const App = () => {
 }
 
 export default App;
-
-//userAnswer ? true : false
