@@ -108,16 +108,16 @@ button, select {
 
 .year_filter {
   position: fixed;
-  top: 10vh;
-  right: 20vw;
+  top: 15vh;
+  right: 15vw;
   min-width: 144px;
   padding-right: 10px;
 }
 
 .sort_button {
   position: fixed;
-  top: 10vh;
-  right: 10vw;
+  top: 15vh;
+  right: 5vw;
   min-width: 156px;
   padding-left: 10px;
 }
@@ -126,7 +126,7 @@ button, select {
   position: absolute;
   top: 20vh;
   max-height: 80vh;
-  right: 10vw;
+  right: 5vw;
   overflow: scroll;
 }
 
