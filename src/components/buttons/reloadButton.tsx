@@ -13,6 +13,6 @@ export const ReloadButton: React.FC<Props> = ({reload}) => {
   }
   
   return(
-    <button data-testid="reload-button" onClick={handleReload} className="reload_button">Reload Data <img src={refreshIcon}/></button>
+    <button data-testid="reload-button" onClick={handleReload} className="reload_button">Reload Data <img src={refreshIcon} alt=""/></button>
   )
 }

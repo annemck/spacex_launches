@@ -111,7 +111,7 @@ const App = () => {
       </div>
       
       <div>
-        <img src={launchImage} alt="image of rocket launching" className="launch_img"/>
+        <img src={launchImage} alt="rocket launching" className="launch_img"/>
       </div>
     
       <div className="all_buttons">
