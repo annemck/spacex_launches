@@ -94,6 +94,7 @@ const App = () => {
   
   
   useEffect(() => {
+    document.title = 'SpaceX Launches';
     (async () => {
       await getLaunches();
       setLaunchYears(getListOfYears());
@@ -109,17 +110,17 @@ const App = () => {
         <img src={logo} alt="Space X Logo" className="spacex_logo"/>
         <p className="logo_text">LAUNCHES</p>
       </div>
-      
-      <div>
-        <img src={launchImage} alt="rocket launching" className="launch_img"/>
-      </div>
     
-      <div className="all_buttons">
+      <div>
         <ButtonContainer hasLoaded={loaded} sortOrder={order} sort={handleSort} years={launchYears} selectedYear={year} filter={handleFilter} reload={handleReload}/>
       </div>
       
+      <div className="main_container">
+        <img src={launchImage} alt="rocket launching" className="launch_img"/>
+    
       <div className="container">
       {loaded ? <LaunchContainer launches={filteredLaunches.length > 0 ? filteredLaunches : launches}/> : <p className="list_loading">Loading...</p>}
+      </div>
       </div>
     </div>
   );

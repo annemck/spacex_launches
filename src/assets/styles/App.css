@@ -55,9 +55,11 @@ body {
 }
 
 
+
+/*LOGO*/
+
 .logo_div {
-  display: inline;
-  max-width: 20vw;
+  position: fixed;
 }
 
 .spacex_logo {
@@ -72,70 +74,99 @@ body {
   font-size: 20px;
 }
 
-.launch_img {
-  position: fixed;
-  padding-top: 10vh;
-  max-height: 80vh;
-}
 
-.list_loading {
-  color: var(--font-color);
-  font-family: "Brandon Grotesque";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  float: left;
-}
+
+
+/*BUTTONS*/
 
 button, select {
   background-color: var(--primary-blue);
   color: white;
   min-height: 30px;
-  font-family: "Brandon Grotesque";
+  font-family: var(--font-family);
   font-weight: bold;
   font-style: normal;
   font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 0px;
+}
+
+.all_buttons {
+  display: block;
+  position: fixed;
+  right: 0px;
 }
 
 .reload_button {
-  position: fixed;
-  top: 5vh;
-  right: 0px;
-  min-width: 134px;
+  display: block;
+  float: right;
+  position: relative;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
 
-.year_filter {
-  position: fixed;
-  top: 15vh;
-  right: 15vw;
-  min-width: 144px;
-  padding-right: 10px;
+.inline_buttons {
+  display: inline-block;
+  margin-top: 30px;
 }
 
 .sort_button {
+  display: inline-block;
+  width: 150px;
+  margin-right: 50px;
+}
+
+.year_filter {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+select {
+  width: 140px;
+  min-height: 30px;
+}
+
+
+
+
+/*IMAGE AND LIST*/
+/*
+.main_container {
+  display: fixed;
+  top: 20vh;
+  width: 100vw;
+}
+
+.launch_img {
+  float: left;
   position: fixed;
-  top: 15vh;
-  right: 5vw;
-  min-width: 156px;
-  padding-left: 10px;
+  top: 20vh;
+  max-width: 40vw;
+}
+
+.list_loading {
+  color: var(--font-color);
+  font-family: var(--font-family);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* float: left;
 }
 
 .container {
+  float: right;
+  max-width: 60vw;
   position: absolute;
-  top: 20vh;
-  max-height: 80vh;
-  right: 5vw;
   overflow: scroll;
-}
+} */
 
 ul {
   list-style-type: none;
 }
 
 .list_element {
-  min-width: 40vw;
+  min-width: 80vw;
   /* min-height: 30px; */
   border: 1px solid lightgrey;
   box-shadow: 1px 1px 1px lightgrey;
@@ -165,7 +196,7 @@ ul {
 
 .flight_number {
   padding-right: 15px;
-  font-family: "Brandon Grotesque";
+  font-family: var(--font-family);
   font-weight: 500;
   font-style: normal;
   font-size: 40px;
@@ -173,7 +204,7 @@ ul {
 }
 
 .mission_name {
-  font-family: "Brandon Grotesque";
+  font-family: var(--font-family);
   font-weight: 500;
   font-style: normal;
   font-size: 32px;
@@ -182,7 +213,7 @@ ul {
 
 
 .launch_date {
-  font-family: "Brandon Grotesque";
+  font-family: var(--font-family);
   font-weight: normal;
   font-style: normal;
   font-size: 16px;
@@ -194,7 +225,7 @@ ul {
 }
 
 .rocket_name {
-  font-family: "Brandon Grotesque";
+  font-family: var(--font-family);
   font-weight: bold;
   font-style: normal;
   font-size: 24px;

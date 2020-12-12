@@ -16,9 +16,12 @@ type Props = {
 const ButtonContainer: React.FC<Props> = ({hasLoaded, sortOrder, years, selectedYear, sort, filter, reload}) => {
   
   return(
-    <div>
-      <ReloadButton reload={reload}/>
+    <div className="all_buttons">
+      <div className="single_button">
+        <ReloadButton reload={reload}/>
+      </div>
       
+      <div className="inline_buttons">
       {hasLoaded || selectedYear ?
         <React.Fragment>
           <FilterByYear launchYears={years} selectedYear={selectedYear} handleFilter={filter} />
@@ -30,6 +33,7 @@ const ButtonContainer: React.FC<Props> = ({hasLoaded, sortOrder, years, selected
           <SortButton order={sortOrder} changeSort={sort}/>
         </React.Fragment>
       : null}
+      </div>
     </div>
   )
 }
