@@ -19,7 +19,7 @@ const formatDate = (launchDay: string) => {
     day = day.substring(1);
   }
   
-  if (day === '11'){
+  if (day === '11' || day === '12' || day === '13'){
     return day + 'th ' + month + ' ' + year;
   } else if (lastNum === '1'){
     return day + 'st ' + month + ' ' + year;

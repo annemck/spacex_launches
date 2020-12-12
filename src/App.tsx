@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-// import logo from './assets/images/spacex-logo.png';
-// import launchImage from './assets/images/launch-home.png';
+import logo from './assets/images/spacex-logo.png';
+import launchImage from './assets/images/launch-home.png';
+import './assets/styles/App.css';
 import LaunchContainer from './components/launches/launchContainer';
 import ButtonContainer from './components/buttons/buttonContainer';
 import {fetchLaunchDetails, getListOfYears} from './API';
@@ -27,8 +28,8 @@ const App = () => {
     setOrder('asc');
     setLaunchYears(getListOfYears());
     setLoaded(true);
-    
-    
+  
+  
     // setLoaded(false);
     // await getLaunches();
     // setLaunchYears(getListOfYears());
@@ -64,17 +65,17 @@ const App = () => {
       setYear(newYear);
       let tempArray = [];
       setFilteredLaunches([]);
-      
+  
       for (let launch of launches){
         if (launch.launch_year === newYear){
           tempArray.push(launch);
         }
       }
-      
+  
       setFilteredLaunches(tempArray);
       setLoaded(true);
     }
-    
+  
   }
   
   const handleSort = () => {
@@ -104,11 +105,21 @@ const App = () => {
   
   return (
     <div className="App">
+      <div className="logo_div">
+        <img src={logo} alt="Space X Logo" className="spacex_logo"/>
+        <p className="logo_text">LAUNCHES</p>
+      </div>
+      
       <div>
+        <img src={launchImage} alt="image of rocket launching" className="launch_img"/>
+      </div>
+    
+      <div className="all_buttons">
         <ButtonContainer hasLoaded={loaded} sortOrder={order} sort={handleSort} years={launchYears} selectedYear={year} filter={handleFilter} reload={handleReload}/>
       </div>
-      <div>
-      {loaded ? <LaunchContainer launches={filteredLaunches.length > 0 ? filteredLaunches : launches}/> : <p>Loading...</p>}
+      
+      <div className="container">
+      {loaded ? <LaunchContainer launches={filteredLaunches.length > 0 ? filteredLaunches : launches}/> : <p className="list_loading">Loading...</p>}
       </div>
     </div>
   );
