@@ -158,7 +158,7 @@ button, select {
 .launch_img {
   position: fixed;
   display: inline-block;
-  max-width: 35vw;
+  max-width: 40vw;
   max-height: 75vh;
   float: left;
 }
@@ -166,8 +166,8 @@ button, select {
 .list_loading, .launch_list {
   display: inline-block;
   position: relative;
-  padding-left: 35vw;
-
+  padding-left: 45vw;
+  width: 50%;
 }
 
 .list_loading {
