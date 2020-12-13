@@ -82,12 +82,14 @@ body {
 button, select {
   background-color: var(--primary-blue);
   color: white;
-  min-height: 30px;
+  width: 140px;
+  min-height: 35px;
   font-family: var(--font-family);
   font-weight: bold;
   font-style: normal;
   font-size: 16px;
   text-align: center;
+  text-align-last: center;
   border: none;
   border-radius: 0px;
 }
@@ -96,6 +98,15 @@ button, select {
   display: block;
   position: fixed;
   right: 0px;
+  max-height: 15vh;
+}
+
+
+/*if screen is less than 500px wide then give more space at the top before displaying the buttons so they don't overlap the logo*/
+@media only screen and (max-width: 500px) {
+  .all_buttons {
+    top: 8vh;
+  }
 }
 
 .reload_button {
@@ -104,6 +115,10 @@ button, select {
   position: relative;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+}
+
+.reload_button button {
+  width: 100px;
 }
 
 .inline_buttons {
@@ -117,32 +132,42 @@ button, select {
   margin-right: 50px;
 }
 
+.sort_icon {
+  vertical-align: middle;
+}
+
 .year_filter {
   display: inline-block;
   margin-right: 15px;
 }
 
-select {
-  width: 140px;
-  min-height: 30px;
-}
 
 
 
+/*IMAGE AND LIST CONTAINER*/
 
-/*IMAGE AND LIST*/
-/*
 .main_container {
-  display: fixed;
-  top: 20vh;
+  display: block;
+  position: fixed;
   width: 100vw;
+  top: 25vh;
+  max-height: 70vh;
+  overflow: scroll;
 }
 
 .launch_img {
-  float: left;
   position: fixed;
-  top: 20vh;
-  max-width: 40vw;
+  display: inline-block;
+  max-width: 35vw;
+  max-height: 75vh;
+  float: left;
+}
+
+.list_loading, .launch_list {
+  display: inline-block;
+  position: relative;
+  padding-left: 35vw;
+
 }
 
 .list_loading {
@@ -151,56 +176,60 @@ select {
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
-  /* float: left;
 }
 
-.container {
-  float: right;
-  max-width: 60vw;
-  position: absolute;
-  overflow: scroll;
-} */
+/*If screen is less than 500px wide then allow more space at top before displaying container to allow for buttons to wrap around logo and don't display the image*/
 
+@media only screen and (max-width: 500px) {
+  .main_container {
+    top: 30vh;
+  }
+  .launch_img {
+    display: none;
+  }
+  .list_loading, .launch_list {
+    padding-left: 10px;
+    width: 90vw;
+  }
+}
+
+
+
+
+/*LIST ITEMS*/
 ul {
   list-style-type: none;
+  padding-top: 10px;
 }
 
 .list_element {
-  min-width: 80vw;
-  /* min-height: 30px; */
   border: 1px solid lightgrey;
   box-shadow: 1px 1px 1px lightgrey;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
-.flight_number, .mission_name {
+.flight_number, .list_item_container_right {
   display: inline-block;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  padding-top: 0px;
-}
-
-.list_item_container_left, .list_item_container_right {
-  display: inline-block;
-}
-
-.list_item_container_left {
-  padding-left: 15px;
 }
 
 .list_item_container_right {
   float: right;
-  padding-right: 15px;
+  text-align: right;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.flight_number, .mission_name {
+  display: inline-block;
 }
 
 .flight_number {
-  padding-right: 15px;
   font-family: var(--font-family);
   font-weight: 500;
   font-style: normal;
   font-size: 40px;
-  padding-left: 15px;
+  margin:10px 70px 0px 10px;
 }
 
 .mission_name {
@@ -208,20 +237,18 @@ ul {
   font-weight: 500;
   font-style: normal;
   font-size: 32px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
-
-
 
 .launch_date {
   font-family: var(--font-family);
   font-weight: normal;
   font-style: normal;
   font-size: 16px;
-  margin-top: 10px;
-  padding-top: 0px;
-  margin-bottom: 2px;
-  padding-right: 10px;
-  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .rocket_name {
@@ -229,8 +256,14 @@ ul {
   font-weight: bold;
   font-style: normal;
   font-size: 24px;
-  margin-top: 2px;
+  margin-top: 0px;
   margin-bottom: 0px;
-  padding-right: 10px;
-  text-align: right;
+}
+
+
+/*if screen is less than 500px wide then change layout of list so there's less chance of text overlap/items looking like they're part of the wrong list item*/
+@media only screen and (max-width: 500px) {
+  .flight_number, .mission_name {
+    display: block;
+  }
 }

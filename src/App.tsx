@@ -116,11 +116,15 @@ const App = () => {
       </div>
       
       <div className="main_container">
+        {/* <div className="rocket_img_container">*/}
         <img src={launchImage} alt="rocket launching" className="launch_img"/>
+        {/* </div>*/}
     
-      <div className="container">
-      {loaded ? <LaunchContainer launches={filteredLaunches.length > 0 ? filteredLaunches : launches}/> : <p className="list_loading">Loading...</p>}
-      </div>
+        {/* <div className="container">*/}
+          {loaded ?
+            <LaunchContainer launches={filteredLaunches.length > 0 ? filteredLaunches : launches}/>
+            : <p className="list_loading">Loading...</p>}
+        {/* </div>*/}
       </div>
     </div>
   );
