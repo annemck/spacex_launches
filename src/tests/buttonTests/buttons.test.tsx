@@ -65,7 +65,6 @@ test('Filter by year button changes shown option on change', () => {
 // })
 
 test('Sort button changes text on click', async () => {
-  try{
   const{rerender} = render(<ButtonContainer hasLoaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter} reload={reload}/>);
   expect(screen.getByRole('button', {name: /Sort Descending/i}));
   expect(sortOrder).toBe('asc');
@@ -74,9 +73,6 @@ test('Sort button changes text on click', async () => {
   expect(sortOrder).toBe('desc');
   rerender(<ButtonContainer hasLoaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter} reload={reload}/>)
   expect(screen.getByRole('button', {name: /Sort Ascending/i}));
-} catch (err) {
-  console.log(err.message);
-}
 })
 
 // it('Sort button exists', () => {
