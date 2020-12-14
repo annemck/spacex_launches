@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Tests in this application are using Jest and React Testing Library. Note that Jest is installed as a development dependency only. See additional notes for further details.
+Tests in this application are using Jest, jest-axe and React Testing Library. Note that Jest and jest-axe are installed as a development dependency only. See additional notes for further details.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
@@ -43,7 +43,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Additional Notes
 
-This application uses Jest and React Testing Library for running tests. Jest has been installed as a development dependency. To install it alongside production dependencies run:
+This application uses Jest, jest-axe and React Testing Library for running tests. Jest and jest-axe have been installed as a development dependency. To install it alongside production dependencies run:
 
 `npm install --dev`
 
