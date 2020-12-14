@@ -51,10 +51,10 @@ test('Reload button re-fetches from API', () => {
 
 test('Filter by year button changes shown option on change', () => {
   const{getByTestId} = render(<FilterByYear launchYears={years} selectedYear={selectedYear} handleFilter={handleFilter}/>);
-  const selectList = getByTestId('select-list') as HTMLSelectElement;
+  const selectList = getByTestId('select_list') as HTMLSelectElement;
   expect(selectList.value).toBe('Filter by Year');
   expect(selectList.value).not.toBe('2006');
-  userEvent.selectOptions(getByTestId("select-list"), ["2006"]);
+  userEvent.selectOptions(getByTestId("select_list"), ["2006"]);
   expect(selectList.value).toBe('2006');
   expect(selectList.value).not.toBe('Filter by Year');
 })
@@ -65,6 +65,7 @@ test('Filter by year button changes shown option on change', () => {
 // })
 
 test('Sort button changes text on click', async () => {
+  try{
   const{rerender} = render(<ButtonContainer hasLoaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter} reload={reload}/>);
   expect(screen.getByRole('button', {name: /Sort Descending/i}));
   expect(sortOrder).toBe('asc');
@@ -73,6 +74,9 @@ test('Sort button changes text on click', async () => {
   expect(sortOrder).toBe('desc');
   rerender(<ButtonContainer hasLoaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter} reload={reload}/>)
   expect(screen.getByRole('button', {name: /Sort Ascending/i}));
+} catch (err) {
+  console.log(err.message);
+}
 })
 
 // it('Sort button exists', () => {
