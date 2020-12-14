@@ -1,13 +1,15 @@
 import React from 'react';
 import { render, fireEvent, waitForElement, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
+import { axe, toHaveNoViolations }  from "jest-axe";
 
 import ButtonContainer from '../../components/buttons/buttonContainer';
-//import {ReloadButton} from '../../components/buttons/reloadButton';
+import {ReloadButton} from '../../components/buttons/reloadButton';
 import {SortButton} from '../../components/buttons/sortButton';
 import {FilterByYear} from '../../components/buttons/yearFilterButton';
 import App from '../../App';
 
+expect.extend(toHaveNoViolations);
 let loaded = true;
 let sortOrder = 'asc';
 let selectedYear: number | null = null;
@@ -27,9 +29,40 @@ let sort = () => {
   };
 }
 let reload = () => {
-  loaded = false;
-  loaded = true;
+  if (loaded){
+    loaded = false;
+  } else {
+    loaded = true;
+  }
 }
+
+it('No accessibility issues with Button Container component', async () => {
+    const { container } = render(<ButtonContainer hasLoaded={loaded} sortOrder={sortOrder} sort={sort} years={years} selectedYear={selectedYear} filter={handleFilter} reload={reload}/>);
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
+})
+
+it('No accessibility issues with Reload Button component', async () => {
+    const { container } = render(<ReloadButton reload={reload}/>);
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
+})
+
+it('No accessibility issues with Sort Button component', async () => {
+    const { container } = render(<SortButton changeSort={sort} order={sortOrder}/>);
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
+})
+
+// it('No accessibility issues with Year Filter Button component', async () => {
+//     const { container } = render(<FilterByYear launchYears={years} selectedYear={selectedYear} handleFilter={handleFilter}/>);
+//     const results = await axe(container);
+//
+//     expect(results).toHaveNoViolations();
+// })
 
 test('Reload button re-fetches from API', () => {
   (async () => {

@@ -6,22 +6,31 @@ import LaunchListItem from '../../components/launches/launchListItem';
 import {fetchLaunchDetails} from '../../API';
 import App from '../../App';
 
-let launchList;
-const fetch = require('node-fetch');
 expect.extend(toHaveNoViolations);
+const launches = [{flight_number: 1,
+                  mission_name: 'test',
+                  launch_date: '1st Jan 2020',
+                  rocket_name: 'test'}];
 
 
-it('should demonstrate this matcher`s usage with react testing library', async () => {
-  const { container } = render(<App/>)
-  const results = await axe(container)
+// it('No accessibility issues with Launch Container component', async () => {
+//     const { container } = render(<LaunchContainer launches={launches}/>);
+//     const results = await axe(container);
+//
+//     expect(results).toHaveNoViolations();
+// })
 
-  expect(results).toHaveNoViolations()
-})
+// it('No accessibility issues with Launch List Item component', async () => {
+//     const { container } = render(<LaunchListItem launches={launches}/>);
+//     const results = await axe(container);
+//
+//     expect(results).toHaveNoViolations();
+// })
 
 
 it('all 111 items are returned from API', () => {
   (async () => {
-    launchList = await fetchLaunchDetails();
+    const launchList = await fetchLaunchDetails();
     expect(launchList.length).toBe(111);
   })
 })

@@ -25,7 +25,7 @@ export const FilterByYear: React.FC<Props> = ({launchYears, selectedYear, handle
   
   return(
     <div className="year_filter">
-      <select data-testid="select_list" onChange={filter} defaultValue={currentFilter}>
+      <select aria-label="filter by year" data-testid="select_list" onChange={filter} defaultValue={currentFilter}>
         <option data-testid="zero">Filter by Year </option>
         {launchYears.map((year) => (
           <option data-testid={year} key={year} value={year}>{year}</option>

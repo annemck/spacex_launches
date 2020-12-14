@@ -1,5 +1,5 @@
 import React from 'react';
-import * as refreshIcon from '../../assets/icons/refresh.png';
+import refreshIcon from '../../assets/icons/refresh.png';
 
 
 type Props = {

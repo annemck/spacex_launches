@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import * as logo from './assets/images/spacex-logo.png';
-import * as launchImage from './assets/images/launch-home.png';
+import logo from './assets/images/spacex-logo.png';
+import launchImage from './assets/images/launch-home.png';
 import './assets/styles/App.css';
 import LaunchContainer from './components/launches/launchContainer';
 import ButtonContainer from './components/buttons/buttonContainer';
