@@ -1,5 +1,5 @@
 import React from 'react';
-import sortIcon from '../../assets/icons/sort.png';
+import * as sortIcon from '../../assets/icons/sort.png';
 
 type Props = {
   order: string,
